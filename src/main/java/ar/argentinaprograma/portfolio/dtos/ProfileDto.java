@@ -11,7 +11,12 @@ public class ProfileDto {
 	public String nombrePerfil;
 	public String tituloPerfil;
 	public String acercaPerfil;
-
+	
+	
+	
+	
+	public ProfileDto() {
+	}
 	
 	public ProfileDto(Profile prof) {
 		this.id = prof.id;

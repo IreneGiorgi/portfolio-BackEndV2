@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,7 @@ public class SectionService {
 	@Autowired
 	private SectionRepository sectionRepository;
 	
+	
 	public List<Section> findAllSections() {
 		
 		List<CardSection> cardSections = cRepository.findAll();
@@ -52,8 +55,23 @@ public class SectionService {
 		return sectionRepository.save(nSection);
 	}
 
-	public void deleteSection(UUID id){
-		cRepository.deleteById(id);
+	public void deleteSkillSection(Long id) {
+		
+		if (!sRepository.existsById(id)) {
+			throw new RuntimeException("Entity does not exists in database with id: "+ id);
+		}
+		
 		sRepository.deleteById(id);
+		sRepository.flush();
 	}
+	
+	public void deleteCardSection(Long id) {
+		if (!cRepository.existsById(id)) {
+			throw new RuntimeException("Entity does not exists in database with id: "+ id);
+		}
+		
+		cRepository.deleteById(id);
+		cRepository.flush();
+	}
+
 }

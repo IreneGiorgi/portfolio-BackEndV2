@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import ar.argentinaprograma.portfolio.models.SkillSection;
 
 @Repository
-public interface SkillSectionRepository extends JpaRepository <SkillSection, UUID>{
+public interface SkillSectionRepository extends JpaRepository <SkillSection, Long>{
 
 }

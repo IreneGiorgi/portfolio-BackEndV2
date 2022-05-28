@@ -1,8 +1,16 @@
 package ar.argentinaprograma.portfolio.repositories;
 
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.management.RuntimeErrorException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import ar.argentinaprograma.portfolio.controllers.ProfileController;
 import ar.argentinaprograma.portfolio.models.CardSection;
 import ar.argentinaprograma.portfolio.models.Section;
 import ar.argentinaprograma.portfolio.models.SkillSection;
@@ -10,6 +18,10 @@ import ar.argentinaprograma.portfolio.models.SkillSection;
 @Component
 public class SectionRepository {
 
+	
+	private final Logger log = LoggerFactory.getLogger(SectionRepository.class);
+
+	
 	@Autowired
 	private CardSectionRepository cRepository;
 	
@@ -33,5 +45,9 @@ public class SectionRepository {
 		
 		return savedSection;
 	}
+
+	
+	
+	
 	
 }

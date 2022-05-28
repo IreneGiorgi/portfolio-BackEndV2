@@ -9,6 +9,14 @@ import ar.argentinaprograma.portfolio.models.SkillSection;
 
 public class SectionDto {
 	
+	@Override
+	public String toString() {
+		return "SectionDto [type=" + type + ", subtype=" + subtype + ", name=" + name + ", location=" + location
+				+ ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", status="
+				+ status + ", information=" + information + ", percentage=" + percentage + ", userId=" + userId
+				+ ", image=" + image + ", id=" + id + "]";
+	}
+
 	public String type;
 	public String subtype;
 	public String name;
@@ -21,7 +29,10 @@ public class SectionDto {
 	public String percentage;
 	public Long userId;
 	public String image;
-	public UUID id;
+	public Long id;
+	
+	public SectionDto() {
+	}
 	
 	public SectionDto(Section sec) {
 
@@ -42,6 +53,7 @@ public class SectionDto {
 		this.id = sec.id;
 		this.type = sec.type.getName();
 		this.percentage = sec.percentage;
+		this.name = sec.name;
 		this.subtype = sec.subtype;
 		this.userId = sec.userId;
 	}

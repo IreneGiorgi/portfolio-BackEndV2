@@ -5,7 +5,9 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,23 +16,37 @@ import ar.argentinaprograma.portfolio.dtos.SectionDto;
 @Entity
 public class CardSection implements Section{
 
-	@Id 
-	@GeneratedValue (generator = "UUID")	
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", updatable = false, nullable = false)
+	@Override
+	public String toString() {
+		return "CardSection [id=" + id + ", type=" + type + ", subtype=" + subtype + ", name=" + name + ", location="
+				+ location + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", status=" + status + ", information=" + information + ", userId=" + userId + ", image=" + image
+				+ "]";
+	}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	public Long id;
 	
-	public UUID id;
 	public SectionTypeEnum type = SectionTypeEnum.CARD;
 	public String subtype; 
 	public String name;
 	public String location;
+	
+	@Lob
 	public String description;
+	
 	public String startDate;
 	public String endDate;
 	public String status;
 	public String information;
 	public Long userId;
+	
+	@Lob
 	public String image;
+	
+	public CardSection() {
+	}
 	
 	public CardSection(SectionDto dto) {
 		this.id = dto.id;

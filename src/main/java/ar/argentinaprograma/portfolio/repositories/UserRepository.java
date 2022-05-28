@@ -1,6 +1,6 @@
 package ar.argentinaprograma.portfolio.repositories;
 
-import ar.argentinaprograma.portfolio.models.Profile;
+import ar.argentinaprograma.portfolio.models.User;
 
 import java.util.List;
 
@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Component
-public interface ProfileRepository extends JpaRepository <Profile, Long> {
+public interface UserRepository extends JpaRepository <User, Long> {
 
+	List<User> findByUser(String user);
 	
 }

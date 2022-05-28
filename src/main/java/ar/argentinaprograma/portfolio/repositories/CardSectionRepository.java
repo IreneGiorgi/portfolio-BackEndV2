@@ -9,6 +9,6 @@ import ar.argentinaprograma.portfolio.models.CardSection;
 
 
 @Repository
-public interface CardSectionRepository  extends JpaRepository <CardSection, UUID> {
+public interface CardSectionRepository  extends JpaRepository <CardSection, Long> {
 
 }
