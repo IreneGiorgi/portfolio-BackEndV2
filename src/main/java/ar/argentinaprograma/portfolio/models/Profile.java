@@ -37,6 +37,8 @@ public class Profile {
 	public String bannerURL = "";
 	@Lob
 	public String profileURL = "";
+	
+	@Lob
 	public String about = "";
 	public String title = "";
 	
