@@ -57,17 +57,18 @@ public class UserService {
 		                            SignatureAlgorithm.HS256.getJcaName());
 		
 		Instant now = Instant.now();
+		Long expiration = 72L;
 		
 		String jwtToken = Jwts.builder()
 		        .claim("id", user.id)
 		        .setSubject(user.user)
 		        .setId(String.valueOf(user.id))
 		        .setIssuedAt(Date.from(now ))
-		        .setExpiration(Date.from(now.plus(5l, ChronoUnit.HOURS)))
+		        .setExpiration(Date.from(now.plus(expiration, ChronoUnit.HOURS)))
 		        .signWith(hmacKey)
 		        .compact();
 		
-		auth.expiresIn = now.plus(5l, ChronoUnit.HOURS).getEpochSecond();
+		auth.expiresIn = expiration * 60 * 60;
 		auth.idToken = jwtToken;
 		
 		return auth;
